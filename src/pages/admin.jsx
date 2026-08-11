@@ -1,3 +1,4 @@
+import ProjectManager from "../components/admin/ProjectManager";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -158,29 +159,7 @@ const Admin = () => {
           </button>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            "Projects",
-            "Skills",
-            "Experience",
-            "Education",
-            "Achievements",
-            "Messages",
-          ].map((item) => (
-            <div
-              key={item}
-              className="rounded-2xl border border-white/10 bg-[#080808] p-7"
-            >
-              <p className="text-lg font-medium">
-                {item}
-              </p>
-
-              <p className="mt-2 text-sm text-white/35">
-                Manage your {item.toLowerCase()}.
-              </p>
-            </div>
-          ))}
-        </div>
+        <ProjectManager />
       </div>
     </main>
   );
