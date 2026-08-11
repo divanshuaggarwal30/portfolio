@@ -1,74 +1,84 @@
 import { motion } from "framer-motion";
 import Container from "../common/Container";
 import SectionHeading from "../common/SectionHeading";
-
-const skillGroups = [
-  {
-    title: "Languages",
-    skills: ["Java", "Python", "C", "JavaScript", "HTML", "CSS"],
-  },
-  {
-    title: "Frontend",
-    skills: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    title: "Backend",
-    skills: ["Node.js", "Express.js", "REST APIs"],
-  },
-  {
-    title: "Database",
-    skills: ["PostgreSQL", "Supabase", "MongoDB", "Mongoose"],
-  },
-  {
-    title: "AI / ML",
-    skills: ["Machine Learning", "LLMs", "RAG", "Embeddings", "Gemini"],
-  },
-  {
-    title: "Tools",
-    skills: ["Git", "GitHub", "Vercel", "VS Code"],
-  },
-];
+import useSkills from "../../hooks/useSkills";
 
 const Skills = () => {
+  const { skills, loading, error } = useSkills();
+
+  const groupedSkills = skills.reduce((groups, skill) => {
+    const category = skill.category || "Other";
+
+    if (!groups[category]) {
+      groups[category] = [];
+    }
+
+    groups[category].push(skill);
+
+    return groups;
+  }, {});
+
   return (
-    <section id="skills" className="border-t border-white/10 py-28 sm:py-36">
+    <section
+      id="skills"
+      className="border-t border-white/10 py-28 sm:py-36"
+    >
       <Container>
         <SectionHeading
           eyebrow="Skills"
-          title="Tools I use to build."
-          description="A practical stack spanning software engineering, AI, and modern web development."
+          title="Tools I work with."
+          description="A practical set of technologies I use to build reliable software."
         />
 
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, index) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.05,
-              }}
-              className="bg-[#080808] p-7"
-            >
-              <h3 className="text-sm font-medium text-white/70">
-                {group.title}
-              </h3>
+        {loading && (
+          <div className="text-sm text-white/35">
+            Loading skills...
+          </div>
+        )}
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/45 transition hover:border-white/20 hover:text-white/70"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {error && (
+          <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-5 text-sm text-red-400">
+            {error}
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {Object.entries(groupedSkills).map(
+              ([category, categorySkills], index) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.05,
+                  }}
+                  className="rounded-2xl border border-white/10 bg-[#080808] p-6"
+                >
+                  <h3 className="text-sm font-medium">
+                    {category}
+                  </h3>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {categorySkills.map((skill) => (
+                      <span
+                        key={skill.id}
+                        className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/45"
+                      >
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )
+            )}
+          </div>
+        )}
       </Container>
     </section>
   );

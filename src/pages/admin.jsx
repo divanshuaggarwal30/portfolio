@@ -1,4 +1,5 @@
 import ProjectManager from "../components/admin/ProjectManager";
+import SkillManager from "../components/admin/SkillManager";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -160,6 +161,7 @@ const Admin = () => {
         </div>
 
         <ProjectManager />
+        <SkillManager />
       </div>
     </main>
   );
