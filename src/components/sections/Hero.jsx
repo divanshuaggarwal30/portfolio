@@ -1,10 +1,4 @@
 import { motion } from "framer-motion";
-import {
-  ArrowDown,
-  ArrowUpRight,
-  Github,
-  Linkedin,
-} from "lucide-react";
 import Container from "../common/Container";
 
 const Hero = () => {
@@ -18,7 +12,7 @@ const Hero = () => {
 
       <Container className="relative">
         <div className="max-w-5xl">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,7 +34,9 @@ const Hero = () => {
           >
             Building intelligent
             <br />
-            <span className="text-white/35">software for the real world.</span>
+            <span className="text-white/35">
+              software for the real world.
+            </span>
           </motion.h1>
 
           <motion.p
@@ -62,14 +58,9 @@ const Hero = () => {
           >
             <a
               href="#projects"
-              className="group flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-white/90"
+              className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-white/90"
             >
-              View my work
-
-              <ArrowUpRight
-                size={17}
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
+              View my work →
             </a>
 
             <a
@@ -84,40 +75,28 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-12 flex items-center gap-5"
+            className="mt-12 flex gap-6"
           >
             <a
               href="https://github.com/divanshuaggarwal30"
               target="_blank"
               rel="noreferrer"
-              aria-label="GitHub"
-              className="text-white/40 transition hover:text-white"
+              className="text-sm text-white/40 transition hover:text-white"
             >
-              <Github size={20} />
+              GitHub
             </a>
 
             <a
               href="https://www.linkedin.com/in/divanshu-aggarwal-522420378"
               target="_blank"
               rel="noreferrer"
-              aria-label="LinkedIn"
-              className="text-white/40 transition hover:text-white"
+              className="text-sm text-white/40 transition hover:text-white"
             >
-              <Linkedin size={20} />
+              LinkedIn
             </a>
           </motion.div>
-        </div>
 
-        <motion.a
-          href="#about"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-10 right-6 hidden items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/30 lg:flex"
-        >
-          Scroll
-          <ArrowDown size={14} />
-        </motion.a>
+        </div>
       </Container>
     </section>
   );
