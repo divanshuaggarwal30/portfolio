@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
@@ -10,7 +12,9 @@ import Education from "./components/sections/Education";
 import Achievements from "./components/sections/Achievements";
 import Contact from "./components/sections/Contact";
 
-function App() {
+import Admin from "./pages/Admin";
+
+const Portfolio = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white">
       <Navbar />
@@ -28,6 +32,17 @@ function App() {
 
       <Footer />
     </div>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
