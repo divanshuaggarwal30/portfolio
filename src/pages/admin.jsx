@@ -4,6 +4,8 @@ import ExperienceManager from "../components/admin/ExperienceManager";
 import EducationManager from "../components/admin/EducationManager";
 import AchievementManager from "../components/admin/AchievementManager";
 import ProfileManager from "../components/admin/ProfileManager";
+import MessageManager from "../components/admin/MessageManager";
+
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -170,6 +172,7 @@ const Admin = () => {
         <ExperienceManager />
         <EducationManager />
         <AchievementManager />
+        <MessageManager />
       </div>
     </main>
   );

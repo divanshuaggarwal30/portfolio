@@ -4,13 +4,15 @@ export const getProfile = async () => {
   const { data, error } = await supabase
     .from("profile")
     .select("*")
-    .limit(1);
+    .limit(1)
+    .maybeSingle();
 
   if (error) {
+    console.error("getProfile error:", error);
     throw error;
   }
 
-  return data?.[0] || null;
+  return data;
 };
 
 export const updateProfile = async (id, profile) => {
@@ -21,12 +23,13 @@ export const updateProfile = async (id, profile) => {
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
-    .select("*")
-    .limit(1);
+    .select()
+    .maybeSingle();
 
   if (error) {
+    console.error("updateProfile error:", error);
     throw error;
   }
 
-  return data?.[0] || null;
+  return data;
 };
