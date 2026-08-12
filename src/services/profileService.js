@@ -12,23 +12,37 @@ export const getProfile = async () => {
     throw error;
   }
 
+  if (!data) {
+    throw new Error("Profile record was not found.");
+  }
+
   return data;
 };
 
-export const updateProfile = async (id, profile) => {
+export const updateProfile = async (id, updates) => {
+  if (!id) {
+    throw new Error("Profile ID is required.");
+  }
+
   const { data, error } = await supabase
     .from("profile")
     .update({
-      ...profile,
+      ...updates,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
-    .select()
+    .select("*")
     .maybeSingle();
 
   if (error) {
     console.error("updateProfile error:", error);
     throw error;
+  }
+
+  if (!data) {
+    throw new Error(
+      "Profile could not be updated. Check your Supabase RLS policies."
+    );
   }
 
   return data;

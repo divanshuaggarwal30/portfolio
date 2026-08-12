@@ -5,6 +5,7 @@ import EducationManager from "../components/admin/EducationManager";
 import AchievementManager from "../components/admin/AchievementManager";
 import ProfileManager from "../components/admin/ProfileManager";
 import MessageManager from "../components/admin/MessageManager";
+import MediaManager from "../components/admin/MediaManager";
 
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -167,6 +168,7 @@ const Admin = () => {
         </div>
 
         <ProfileManager />
+        <MediaManager />
         <ProjectManager />
         <SkillManager />
         <ExperienceManager />

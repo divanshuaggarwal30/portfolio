@@ -51,6 +51,7 @@ const Hero = () => {
 
       <Container className="relative">
         <div className="max-w-5xl">
+
           {/* Availability */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +79,8 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="max-w-5xl text-5xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-7xl lg:text-8xl"
           >
-            {profile.headline || "Building intelligent"}
+            {profile.headline ||
+              "Building intelligent products."}
           </motion.h1>
 
           {/* Name */}
@@ -111,6 +113,7 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
+            {/* Projects */}
             <a
               href="#projects"
               className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-white/90"
@@ -118,6 +121,7 @@ const Hero = () => {
               View my work →
             </a>
 
+            {/* Contact */}
             <a
               href="#contact"
               className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white/80 transition hover:border-white/30 hover:text-white"
@@ -125,14 +129,16 @@ const Hero = () => {
               Get in touch
             </a>
 
+            {/* DIRECT RESUME LINK */}
             {profile.resume_url && (
               <a
                 href={profile.resume_url}
                 target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 px-6 py-3 text-sm font-medium text-white/50 transition hover:border-white/25 hover:text-white"
+                rel="noopener noreferrer"
+                aria-label="Open resume"
+                className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white/70 transition hover:border-white/40 hover:bg-white/[0.04] hover:text-white"
               >
-                Resume ↗
+                View Resume ↗
               </a>
             )}
           </motion.div>
@@ -148,7 +154,7 @@ const Hero = () => {
               <a
                 href={profile.github_url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-sm text-white/40 transition hover:text-white"
               >
                 GitHub ↗
@@ -159,7 +165,7 @@ const Hero = () => {
               <a
                 href={profile.linkedin_url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-sm text-white/40 transition hover:text-white"
               >
                 LinkedIn ↗
@@ -170,7 +176,7 @@ const Hero = () => {
               <a
                 href={profile.twitter_url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-sm text-white/40 transition hover:text-white"
               >
                 X ↗
@@ -204,7 +210,7 @@ const Hero = () => {
                   </p>
 
                   <p className="mt-1 text-xs text-white/30">
-                    {profile.hero_stat_1_label}
+                    {profile.hero_stat_1_label || ""}
                   </p>
                 </div>
               )}
@@ -216,7 +222,7 @@ const Hero = () => {
                   </p>
 
                   <p className="mt-1 text-xs text-white/30">
-                    {profile.hero_stat_2_label}
+                    {profile.hero_stat_2_label || ""}
                   </p>
                 </div>
               )}
@@ -228,7 +234,7 @@ const Hero = () => {
                   </p>
 
                   <p className="mt-1 text-xs text-white/30">
-                    {profile.hero_stat_3_label}
+                    {profile.hero_stat_3_label || ""}
                   </p>
                 </div>
               )}

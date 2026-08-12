@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, ExternalLink } from "lucide-react";
 import Container from "../common/Container";
 import SectionHeading from "../common/SectionHeading";
 import { useProfileContext } from "../../contexts/ProfileContext";
@@ -89,6 +89,7 @@ const Contact = () => {
         />
 
         <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+
           {/* CONTACT INFO */}
 
           <div className="rounded-2xl border border-white/10 bg-[#080808] p-7">
@@ -109,6 +110,8 @@ const Contact = () => {
               and interesting technical problems.
             </p>
 
+            {/* EMAIL */}
+
             {profile?.email && (
               <a
                 href={`mailto:${profile.email}`}
@@ -118,10 +121,36 @@ const Contact = () => {
               </a>
             )}
 
+            {/* LOCATION */}
+
             {profile?.location && (
               <p className="mt-3 text-xs text-white/25">
                 {profile.location}
               </p>
+            )}
+
+            {/* RESUME */}
+
+            {profile?.resume_url && (
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <p className="text-xs uppercase tracking-[0.15em] text-white/30">
+                  Resume
+                </p>
+
+                <a
+                  href={profile.resume_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/60 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+                >
+                  View my resume
+
+                  <ExternalLink
+                    size={15}
+                    strokeWidth={1.7}
+                  />
+                </a>
+              </div>
             )}
           </div>
 
@@ -132,6 +161,7 @@ const Contact = () => {
             className="rounded-2xl border border-white/10 bg-[#080808] p-7"
           >
             <div className="grid gap-5 sm:grid-cols-2">
+
               <Input
                 label="Name"
                 name="name"
@@ -166,6 +196,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="Opportunity"
               />
+
             </div>
 
             <div className="mt-5">
