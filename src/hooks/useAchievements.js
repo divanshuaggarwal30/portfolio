@@ -34,4 +34,4 @@ const useAchievements = () => {
   };
 };
 
-export default useAchievements;
+export { useAchievements };
