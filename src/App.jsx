@@ -12,7 +12,7 @@ import Education from "./components/sections/Education";
 import Achievements from "./components/sections/Achievements";
 import Contact from "./components/sections/Contact";
 
-import Admin from "./pages/Admin";
+import Admin from "./pages/admin";
 
 const Portfolio = () => {
   return (
